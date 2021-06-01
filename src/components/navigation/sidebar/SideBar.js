@@ -17,6 +17,9 @@ export const SideBar = (props) => {
 		<Drawer isOpen={drawerIsOpen}>
 			<img onClick={() => drawerHandler(false)} src={logotype} alt={''} style={{ width: 350, margin: 5 }} />
 			<hr />
+			<Paragraph onClick={() => navigate(RoutingPath.hooksView)}>Hooks</Paragraph>
+			<Paragraph onClick={() => navigate(RoutingPath.propsView)}>Props</Paragraph>
+			<Paragraph onClick={() => navigate(RoutingPath.RESTView)}>API</Paragraph>
 			<Paragraph onClick={() => navigate(RoutingPath.dashboardView)}>Dashboard</Paragraph>
 			<Paragraph onClick={() => navigate(RoutingPath.fileManagementView)}>FileBrowsing & Upload</Paragraph>
 			<Paragraph onClick={() => navigate(RoutingPath.dashboardView)}>Testing</Paragraph>

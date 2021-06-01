@@ -16,6 +16,8 @@ HamburgerButton.propTypes = {
 }
 
 const ToggleButton = styled.button`
+	align-self: center;
+	justify-self: center;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;

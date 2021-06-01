@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const BackDrop = (props) => {
 	const { drawerHandler } = props
-	return <Div onClick={() => drawerHandler ? drawerHandler(false) : null} />
+	return <Div onClick={() => { if (drawerHandler) drawerHandler(false) }} />
 }
 
 const Div = styled.div`
