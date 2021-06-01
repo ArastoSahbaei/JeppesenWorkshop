@@ -19,13 +19,14 @@
     ],
     "rules": {
 		"react/react-in-jsx-scope": "off",
+		"react/prop-types": "warn",
+		"no-unused-vars": "warn",
         "indent": [
             "warn",
             "tab"
         ],
         "linebreak-style": [
-            "warn",
-            "windows"
+            0
         ],
         "quotes": [
             "warn",

@@ -1,7 +1,10 @@
+import { Navigation } from './components/navigation/Navigation'
+import { Routes } from './routes/Routes'
+
 export const App = () => {
 	return (
-		<div>
-			<h1>lol</h1>
-		</div>
+		<Routes>
+			<Navigation />
+		</Routes>
 	)
 }
