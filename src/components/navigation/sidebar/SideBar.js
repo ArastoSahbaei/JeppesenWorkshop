@@ -1,20 +1,28 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { useHistory } from 'react-router-dom'
+import RoutingPath from '../../../routes/RoutingPath'
+import logotype from '../../../shared/images/logotype.png'
 
 export const SideBar = (props) => {
 	const { drawerIsOpen, drawerHandler } = props
+	const history = useHistory()
+
+	const navigate = (route) => {
+		history.push(route)
+		drawerHandler(false)
+	}
 
 	return (
 		<Drawer isOpen={drawerIsOpen}>
-			<h1 onClick={() => drawerHandler(false)}>Exit</h1>
-			<ul>
-				<li>
-					<a href="/">Products</a>
-				</li>
-				<li>
-					<a href="/">Users</a>
-				</li>
-			</ul>
+			<img onClick={() => drawerHandler(false)} src={logotype} alt={''} style={{ width: 350, margin: 5 }} />
+			<hr />
+			<Paragraph onClick={() => navigate(RoutingPath.dashboardView)}>Dashboard</Paragraph>
+			<Paragraph onClick={() => navigate(RoutingPath.fileManagementView)}>FileBrowsing & Upload</Paragraph>
+			<Paragraph onClick={() => navigate(RoutingPath.dashboardView)}>Testing</Paragraph>
+			<Paragraph onClick={() => navigate(RoutingPath.dashboardView)}>Mocking</Paragraph>
+			<Paragraph onClick={() => navigate(RoutingPath.dashboardView)}>Mock REST API</Paragraph>
+			<Paragraph>Sign out</Paragraph>
 		</Drawer>
 	)
 }
@@ -23,6 +31,17 @@ SideBar.propTypes = {
 	drawerIsOpen: PropTypes.boolean,
 	drawerHandler: PropTypes.function
 }
+
+const Paragraph = styled.p`
+font-weight: 600;
+font-size: 1.4rem;
+cursor: pointer;
+transition: 0.3s;
+&:hover {
+	margin-left: 20px;
+	transition: 0.3s;
+}
+`
 
 const Drawer = styled.nav`
 	height: 100%;
