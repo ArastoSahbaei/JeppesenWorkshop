@@ -9,7 +9,7 @@ export const FileUpload = () => {
 	const uploadFile = async (formData) => {
 		try {
 			setIsLoading(true)
-			const { data } = await Axios.post('http://localhost:3001/user/updateAvatar', formData, {
+			const { data } = await Axios.post('http://localhost:3001/fileupload/single', formData, {
 				headers: { 'Content-Type': 'multipart/form-data' },
 				onUploadProgress: ProgressEvent => { setUploadPercentage(parseInt(Math.round((ProgressEvent.loaded * 100 / ProgressEvent.total)))) }
 			})
