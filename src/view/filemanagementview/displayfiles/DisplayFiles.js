@@ -32,9 +32,7 @@ export const DisplayFiles = () => {
 
 	return (
 		<div>
-			<h1>Display all files</h1>
-			{/* 	<button onClick={() => downloadFile()}>download</button> */}
-			<button onClick={() => console.log(files)}>display</button>
+			<h3>Displaying all files below <br/>(click to download)</h3>
 			{displayAllFiles()}
 		</div>
 	)

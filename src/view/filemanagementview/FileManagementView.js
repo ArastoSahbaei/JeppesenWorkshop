@@ -1,9 +1,9 @@
 import { FileUpload } from '../../components/FileUpload'
 import { DisplayFiles } from './displayfiles/DisplayFiles'
+import { SearchFiles } from './searchfiles/SearchFiles'
 
 export const FileManagementView = () => {
 
-	const downloadFile = (id) => { window.open(`http://localhost:3001/download/${id}`) }
 
 	return (
 		<div>
@@ -14,6 +14,8 @@ export const FileManagementView = () => {
 			<FileUpload />
 			<hr />
 			<DisplayFiles />
+			<hr />
+			<SearchFiles />
 		</div>
 	)
 }
