@@ -1,8 +1,13 @@
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 export const BackDrop = (props) => {
 	const { drawerHandler } = props
 	return <Div onClick={() => { if (drawerHandler) drawerHandler(false) }} />
+}
+
+BackDrop.propTypes = {
+	drawerHandler: PropTypes.function
 }
 
 const Div = styled.div`
