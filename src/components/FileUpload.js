@@ -2,22 +2,20 @@ import Axios from 'axios'
 import { useState } from 'react'
 
 export const FileUpload = () => {
-	const [upload, setUpload] = useState()
+	const [file, setFile] = useState()
 	const [isLoading, setIsLoading] = useState(false)
-	const formData = new FormData()
+	const [uploadPercentage, setUploadPercentage] = useState(0)
 
-	const config = {
-		headers: {
-			'content-type': 'multipart/form-data'
-		}
-	}
-
-	const uploadFile = async () => {
+	const uploadFile = async (formData) => {
 		try {
 			setIsLoading(true)
-			await Axios.post('http://localhost:3001/user/updateAvatar', formData, config)
+			const { data } = await Axios.post('http://localhost:3001/user/updateAvatar', formData, {
+				headers: { 'Content-Type': 'multipart/form-data' },
+				onUploadProgress: ProgressEvent => { setUploadPercentage(parseInt(Math.round((ProgressEvent.loaded * 100 / ProgressEvent.total)))) }
+			})
 			setIsLoading(false)
-			alert('it worked Lol')
+			console.log(data)
+			setTimeout(() => setUploadPercentage(0), 3000)
 		} catch (error) {
 			setIsLoading(false)
 			alert('failed uploading image')
@@ -27,12 +25,13 @@ export const FileUpload = () => {
 
 	const onFormSubmit = (e) => {
 		e.preventDefault()
-		formData.append('files', upload.file)
-		uploadFile()
+		const formData = new FormData()
+		formData.append('files', file.file)
+		uploadFile(formData)
 	}
 
 	const onChange = (e) => {
-		setUpload({ file: e.target.files[0] })
+		setFile({ file: e.target.files[0] })
 	}
 
 	return (
@@ -42,6 +41,7 @@ export const FileUpload = () => {
 				<input type="file" accept="image/png, image/jpeg" multiple onChange={(e) => onChange(e)} />
 				{isLoading ? <h1>LOADING..</h1> : <button type="submit">UPLOAD</button>}
 			</form>
+			<h1>{uploadPercentage != 0 ? uploadPercentage + '%' : null}</h1>
 		</div>
 	)
 }
