@@ -11,7 +11,6 @@ export const SearchFiles = () => {
 	const [isSearching, setIsSearching] = useState(false)
 	const debouncedSearchTerm = useDebounce(searchTerm, 500)
 
-
 	const startSearch = async () => {
 		setIsSearching(true)
 		if (debouncedSearchTerm) {
@@ -19,11 +18,9 @@ export const SearchFiles = () => {
 				const { data } = await APIService.searchRecipe(searchTerm)
 				setIsSearching(false)
 				setResults(data)
-				console.log(data)
 			} catch (error) {
 				setIsSearching(false)
 				setResults([])
-				console.log(error)
 			}
 		} else {
 			setResults([])
@@ -35,6 +32,22 @@ export const SearchFiles = () => {
 		startSearch()
 	}, [debouncedSearchTerm])
 
+	const displayResult = () => {
+		return (
+			results.map((element) => (
+				<>
+					<div key={element.fileName}>
+						<p>File Name: {element.fileName}</p>
+						<p>File Size: {element.fileSize}</p>
+						<p>File Type: {element.fileType}</p>
+						<p>Uploaded Date: {element.createdAt}</p>
+						<hr />
+					</div>
+				</>
+			))
+		)
+	}
+
 	return (
 		<div>
 			<h1>Filter (search) between files</h1>
@@ -42,6 +55,7 @@ export const SearchFiles = () => {
 				ref={formRef}
 				placeholder={'Search between 3874 files'}
 				onChange={event => setSearchTerm(event.target.value)} />
+			{displayResult()}
 		</div>
 	)
 }
