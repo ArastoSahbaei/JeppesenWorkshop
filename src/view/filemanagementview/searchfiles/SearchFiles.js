@@ -50,7 +50,7 @@ export const SearchFiles = () => {
 
 	return (
 		<div>
-			<h1>Filter (search) between files</h1>
+			<h1 data-testid='searchFilter'>Filter (search) between files</h1>
 			<input className="searchInput"
 				ref={formRef}
 				placeholder={'Search between 3874 files'}
