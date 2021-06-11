@@ -1,4 +1,5 @@
 import Axios from 'axios'
+import MockAPIService from '../shared/images/api/service/MockAPIService'
 
 export const RESTView = () => {
 
@@ -12,7 +13,7 @@ export const RESTView = () => {
 
 	const getUsers = async () => {
 		try {
-			const { data } = await Axios.get('https://60ba330980400f00177b7d6a.mockapi.io/api/v1/users')
+			const { data } = await MockAPIService.getAllUsers()
 			console.log(data)
 		} catch (error) {
 			console.error(error)

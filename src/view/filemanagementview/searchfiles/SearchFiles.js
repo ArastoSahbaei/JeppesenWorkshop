@@ -52,6 +52,7 @@ export const SearchFiles = () => {
 		<div>
 			<h1 data-testid='searchFilter'>Filter (search) between files</h1>
 			<input className="searchInput"
+				data-testid='searchInput'
 				ref={formRef}
 				placeholder={'Search between 3874 files'}
 				onChange={event => setSearchTerm(event.target.value)} />
