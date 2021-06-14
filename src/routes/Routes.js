@@ -25,5 +25,5 @@ export const Routes = (props) => {
 }
 
 Routes.propTypes = {
-	children: PropTypes.component,
+	children: PropTypes.any,
 }

@@ -12,7 +12,7 @@ export const HamburgerButton = (props) => {
 }
 
 HamburgerButton.propTypes = {
-	drawerHandler: PropTypes.function
+	drawerHandler: PropTypes.func
 }
 
 const ToggleButton = styled.button`

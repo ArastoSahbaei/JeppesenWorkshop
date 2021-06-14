@@ -20,7 +20,6 @@ export const SearchFiles = () => {
 					setResults(data)
 					setIsSearching(false)
 				}, 1500)
-
 			} catch (error) {
 				setResults([])
 				setIsSearching(false)

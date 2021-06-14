@@ -32,7 +32,7 @@ export const SideBar = (props) => {
 
 SideBar.propTypes = {
 	drawerIsOpen: PropTypes.boolean,
-	drawerHandler: PropTypes.function
+	drawerHandler: PropTypes.func
 }
 
 const Paragraph = styled.p`

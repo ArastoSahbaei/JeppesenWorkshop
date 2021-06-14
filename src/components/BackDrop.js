@@ -7,7 +7,7 @@ export const BackDrop = (props) => {
 }
 
 BackDrop.propTypes = {
-	drawerHandler: PropTypes.function
+	drawerHandler: PropTypes.func
 }
 
 const Div = styled.div`
