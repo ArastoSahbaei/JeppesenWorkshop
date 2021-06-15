@@ -3,8 +3,11 @@ import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 import RoutingPath from '../../../routes/RoutingPath'
 import logotype from '../../../shared/images/logotype.png'
+import { useContext } from 'react'
+import { UserContext } from '../../../shared/provider/UserProvider'
 
 export const SideBar = (props) => {
+	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
 	const { drawerIsOpen, drawerHandler } = props
 	const history = useHistory()
 
@@ -25,7 +28,7 @@ export const SideBar = (props) => {
 			<Paragraph onClick={() => navigate(RoutingPath.dashboardView)}>Testing</Paragraph>
 			<Paragraph onClick={() => navigate(RoutingPath.dashboardView)}>Mocking</Paragraph>
 			<Paragraph onClick={() => navigate(RoutingPath.dashboardView)}>Mock REST API</Paragraph>
-			<Paragraph>Sign out</Paragraph>
+			<Paragraph onClick={() => navigate(RoutingPath.signInView)}>{authenticatedUser ? authenticatedUser : <p>Sign in</p>}</Paragraph>
 		</Drawer>
 	)
 }

@@ -7,6 +7,7 @@ import { RESTView } from '../view/RESTView'
 import { FileManagementView } from '../view/filemanagementview/FileManagementView'
 import RoutingPath from './RoutingPath'
 import PropTypes from 'prop-types'
+import { SignInView } from '../view/signinview/SignInView'
 
 export const Routes = (props) => {
 	return (
@@ -18,6 +19,7 @@ export const Routes = (props) => {
 				<Route exact path={RoutingPath.RESTView} component={RESTView} />
 				<Route exact path={RoutingPath.dashboardView} component={DashboardView} />
 				<Route exact path={RoutingPath.fileManagementView} component={FileManagementView} />
+				<Route exact path={RoutingPath.signInView} component={SignInView} />
 				<Route component={LandingView} />
 			</Switch>
 		</BrowserRouter>

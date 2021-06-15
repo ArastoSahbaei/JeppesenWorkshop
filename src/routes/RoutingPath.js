@@ -4,6 +4,7 @@ const hooksView = '/hooks'
 const dashboardView = '/dashboard'
 const fileManagementView = '/filemanagement'
 const RESTView = '/rest/api/'
+const signInView = '/signin'
 
 export default {
 	landingView,
@@ -11,5 +12,6 @@ export default {
 	hooksView,
 	dashboardView,
 	fileManagementView,
-	RESTView
+	RESTView,
+	signInView
 }
