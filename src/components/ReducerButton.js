@@ -1,10 +1,11 @@
 import { useReducer } from 'react'
+import PropTypes from 'prop-types'
 
 const reducer = (state, action) => {
 	switch (action) {
-		case 'increment': return state + 1
-		case 'decrement': return state - 1
-		default: throw new Error
+	case 'increment': return state + 1
+	case 'decrement': return state - 1
+	default: throw new Error
 	}
 }
 
@@ -19,4 +20,8 @@ export const ReducerButton = (props) => {
 			<button onClick={() => dispatch('decrement')}>decrement</button>
 		</div>
 	)
+}
+
+ReducerButton.propTypes = {
+	currentNumber: PropTypes.number
 }

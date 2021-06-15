@@ -41,3 +41,13 @@ test('decrement button functionality', () => {
 	for (i = 0; i < 1000; i++) { fireEvent.click(decrementButton) }
 	expect(getByText(/^The current value: -1000$/i))
 })
+
+test('decrement button functionality', () => {
+	const { getByText } = render(<ReducerButton currentNumber={10} />)
+	const decrementButton = getByText(/decrement/)
+
+	let i
+	for (i = 0; i < 100; i++) { fireEvent.click(decrementButton) }
+	expect(getByText(/The current value: -90/))
+})
+
