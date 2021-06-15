@@ -25,6 +25,7 @@ export const Navigation = () => {
 			return 'API'
 		case RoutingPath.propsView:
 			return 'Props'
+		default: ''
 		}
 	}
 
