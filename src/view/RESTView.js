@@ -24,7 +24,9 @@ export const RESTView = () => {
 
 	const displayData = () => {
 		return (
-			data.map((element) => <h1 key={element.user}>{element.name}</h1>)
+			data.map((element) =>
+				<h1 data-testid='row' key={element.name}>{element.name}</h1>
+			)
 		)
 	}
 

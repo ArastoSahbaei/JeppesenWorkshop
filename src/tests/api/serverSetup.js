@@ -6,23 +6,16 @@ const server = setupServer(
 		return res(
 			ctx.status(200),
 			ctx.json([
-				{ username: 'arasto' },
-				{ username: 'arasto2' },
-				{ username: 'arasto3' },
+				{ name: 'arasto' },
+				{ name: 'arasto2' },
+				{ name: 'arasto3' },
 			])
 		)
 	}),
-	rest.get('*', (req, res, ctx) => {
-		console.error(`Please add request handler for ${req.url.toString()}`)
-		return res(
-			ctx.status(500),
-			ctx.json({ error: 'Please add request handler' })
-		)
-	})
 )
 
 beforeAll(() => server.listen())
-afterAll(() => server.close())
 afterEach(() => server.resetHandlers())
+afterAll(() => server.close())
 
 export { server, rest }
