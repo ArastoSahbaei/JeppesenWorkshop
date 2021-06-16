@@ -16,9 +16,30 @@ export const SideBar = (props) => {
 		drawerHandler(false)
 	}
 
+	const signOut = () => {
+		setAuthenticatedUser(false)
+		localStorage.removeItem('user')
+		localStorage.removeItem('admin')
+		navigate(RoutingPath.landingView)
+	}
+
+	const displaySignOut = () => {
+		if (authenticatedUser) {
+			return <Paragraph onClick={() => signOut()}>Sign out</Paragraph>
+		}
+	}
+
+	const displayUsername = () => {
+		return authenticatedUser?.username
+			? <Paragraph>{authenticatedUser.username}</Paragraph>
+			: <Paragraph onClick={() => navigate(RoutingPath.signInView)}>Sign in/Register</Paragraph>
+	}
+
 	return (
 		<Drawer isOpen={drawerIsOpen}>
 			<img onClick={() => drawerHandler(false)} src={logotype} alt={''} style={{ width: 350, margin: 5 }} />
+			<hr />
+			{displayUsername()}
 			<hr />
 			<Paragraph onClick={() => navigate(RoutingPath.hooksView)}>Hooks</Paragraph>
 			<Paragraph onClick={() => navigate(RoutingPath.propsView)}>Props</Paragraph>
@@ -28,7 +49,8 @@ export const SideBar = (props) => {
 			<Paragraph onClick={() => navigate(RoutingPath.dashboardView)}>Testing</Paragraph>
 			<Paragraph onClick={() => navigate(RoutingPath.dashboardView)}>Mocking</Paragraph>
 			<Paragraph onClick={() => navigate(RoutingPath.dashboardView)}>Mock REST API</Paragraph>
-			<Paragraph onClick={() => navigate(RoutingPath.signInView)}>{authenticatedUser ? authenticatedUser : <p>Sign in</p>}</Paragraph>
+			<hr />
+			{displaySignOut()}
 		</Drawer>
 	)
 }

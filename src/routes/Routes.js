@@ -8,8 +8,24 @@ import { FileManagementView } from '../view/filemanagementview/FileManagementVie
 import RoutingPath from './RoutingPath'
 import PropTypes from 'prop-types'
 import { SignInView } from '../view/signinview/SignInView'
+import { useContext, useEffect } from 'react'
+import { UserContext } from '../shared/provider/UserProvider'
+
 
 export const Routes = (props) => {
+	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
+
+	const blockRouteIfAuthenticated = (navigateToViewIfAuthenticated) => {
+		return authenticatedUser?.username ? LandingView : navigateToViewIfAuthenticated
+	}
+
+	useEffect(() => {
+		setAuthenticatedUser({
+			username: localStorage.getItem('user'),
+			admin: localStorage.getItem('admin')
+		})
+	}, [])
+
 	return (
 		<BrowserRouter>
 			{props.children}
@@ -19,7 +35,7 @@ export const Routes = (props) => {
 				<Route exact path={RoutingPath.RESTView} component={RESTView} />
 				<Route exact path={RoutingPath.dashboardView} component={DashboardView} />
 				<Route exact path={RoutingPath.fileManagementView} component={FileManagementView} />
-				<Route exact path={RoutingPath.signInView} component={SignInView} />
+				<Route exact path={RoutingPath.signInView} component={blockRouteIfAuthenticated(SignInView)} />
 				<Route component={LandingView} />
 			</Switch>
 		</BrowserRouter>

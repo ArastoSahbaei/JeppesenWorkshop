@@ -1,7 +1,9 @@
 import Axios from 'axios'
+import { useFetch } from '../hooks/useFetch'
 import MockAPIService from '../shared/images/api/service/MockAPIService'
 
 export const RESTView = () => {
+	const { data, loading, error } = useFetch(MockAPIService.getAllUsers)
 
 	const createUser = async () => {
 		try {
@@ -11,23 +13,30 @@ export const RESTView = () => {
 		}
 	}
 
-	const getUsers = async () => {
-		try {
-			const { data } = await MockAPIService.getAllUsers()
-			console.log(data)
-		} catch (error) {
-			console.error(error)
-		}
+	/* 	const getUsers = async () => {
+			try {
+				const { data } = await MockAPIService.getAllUsers()
+				console.log(data)
+			} catch (error) {
+				console.error(error)
+			}
+		} */
+
+	const displayData = () => {
+		return (
+			data.map((element) => <h1 key={element.user}>{element.name}</h1>)
+		)
 	}
 
 	return (
-		<div>
-			<h1>1. API CALLS</h1>
-			<h1>2. Structuring API calls</h1>
-			<h1>3. Mocking API calls</h1>
-			<button onClick={() => createUser()}>create</button>
-			<button onClick={() => getUsers()}>get</button>
-		</div>
+		loading
+			? <h1>LOADING..</h1>
+			:
+			<div>
+				{displayData()}
+				<button onClick={() => createUser()}>create</button>
+				{/* <button onClick={() => getUsers()}>get</button> */}
+			</div>
 	)
 }
 
