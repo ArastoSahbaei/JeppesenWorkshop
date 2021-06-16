@@ -10,6 +10,7 @@ import PropTypes from 'prop-types'
 import { SignInView } from '../view/signinview/SignInView'
 import { useContext, useEffect } from 'react'
 import { UserContext } from '../shared/provider/UserProvider'
+import { DetailedFileView } from '../view/detailedfileview/DetailedFileView'
 
 
 export const Routes = (props) => {
@@ -35,6 +36,7 @@ export const Routes = (props) => {
 				<Route exact path={RoutingPath.RESTView} component={RESTView} />
 				<Route exact path={RoutingPath.dashboardView} component={DashboardView} />
 				<Route exact path={RoutingPath.fileManagementView} component={FileManagementView} />
+				<Route exact path={RoutingPath.fileDetailViewe} component={DetailedFileView} />
 				<Route exact path={RoutingPath.signInView} component={blockRouteIfAuthenticated(SignInView)} />
 				<Route component={LandingView} />
 			</Switch>

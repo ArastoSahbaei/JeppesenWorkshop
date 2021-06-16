@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDebounce } from '../../../hooks/useDebounce'
+import RoutingPath from '../../../routes/RoutingPath'
 import APIService from '../../../shared/images/api/service/APIService'
 
 export const SearchFiles = () => {
@@ -37,7 +38,7 @@ export const SearchFiles = () => {
 	const displayResult = () => {
 		return (
 			results.map((element) => (
-				<div key={element.fileName}>
+				<div key={element.fileName} onClick={() => history.push(RoutingPath.fileDetailView(element._id), element)}>
 					<p>File Name: {element.fileName}</p>
 					<p>File Size: {element.fileSize}</p>
 					<p>File Type: {element.fileType}</p>

@@ -5,6 +5,7 @@ const dashboardView = '/dashboard'
 const fileManagementView = '/filemanagement'
 const RESTView = '/rest/api/'
 const signInView = '/signin'
+const fileDetailView = (id) => { return id ? `/file/${id}` : '/file/:id' }
 
 export default {
 	landingView,
@@ -13,5 +14,6 @@ export default {
 	dashboardView,
 	fileManagementView,
 	RESTView,
-	signInView
+	signInView,
+	fileDetailView
 }
