@@ -74,6 +74,6 @@ export const Chart3 = () => {
 }
 
 const Wrapper = styled.div`
-	grid-column: 2	/5;
+	grid-column: 2/5;
 	grid-row: 3/4;
 `

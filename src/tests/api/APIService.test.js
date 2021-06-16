@@ -1,4 +1,3 @@
-import { server, rest } from './serverSetup'
 import MockAPIService from '../../shared/images/api/service/MockAPIService'
 
 test('get all users', async () => {

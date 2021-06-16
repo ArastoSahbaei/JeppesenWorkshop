@@ -45,3 +45,16 @@ export const FileUpload = () => {
 		</div>
 	)
 }
+
+
+/* 
+https://developer.mozilla.org/en-US/docs/Web/API/FormData
+
+The FormData interface provides a way to easily construct a set of key/value pairs representing form fields and their values,
+ which can then be easily sent using the XMLHttpRequest.send() method.
+ It uses the same format a form would use if the encoding type were set to "multipart/form-data".
+
+FormData.append()
+Appends a new value onto an existing key inside a FormData object,
+ or adds the key if it does not already exist. 
+ */
